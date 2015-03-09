@@ -67,6 +67,69 @@
 
 \newcommand{\FontSize}{11pt}
 %
+% Define the commands to set the variables used by \mktitle
+%
+\newcommand{\subtitle}[1]{\renewcommand{\SubTitle}{#1}}
+\newcommand{\degreetype}[1]{\renewcommand{\DegreeType}{#1}}
+\newcommand{\faculty}[1]{\renewcommand{\Faculty}{#1}}
+\newcommand{\department}[1]{\renewcommand{\Department}{#1}}
+\newcommand{\copyrightnotice}[1]{\renewcommand{\CopyrightNotice}{#1}}
+\newcommand{\isbnprinted}[1]{\renewcommand{\ISBNPrinted}{#1}}
+\newcommand{\isbnelectronic}[1]{\renewcommand{\ISBNElectronic}{#1}}
+\newcommand{\serialnumber}[1]{\renewcommand{\SerialNumber}{#1}}
+\newcommand{\setyear}[1]{\renewcommand{\Year}{#1}}
+\newcommand{\setmonth}[1]{\renewcommand{\Month}{#1}}
+\newcommand{\mktitle}{
+    \begin{titlingpage}
+    \parindent=0cm
+    \addtolength{\parskip}{\baselineskip}
+    {\Huge \@author}
+    \printandscreen{\vspace{2cm}}{\vspace{0.5cm}}
+
+    {\Huge \textbf{\@title}}
+
+    {\LARGE \SubTitle}
+    \vfill
+
+    {\large Master's thesis\\for the degree of \DegreeType
+
+    Trondheim, \Month\ \Year
+
+    Norwegian University of Science and Technology\\
+    \Faculty\ \\
+    \Department}
+    \printandscreen{\vspace{2cm}}{\vspace{0.75cm}}
+
+    \includegraphics[width=0.4\textwidth]{DocumentClass/NTNUlogo}
+
+    \newpage
+    {~}
+    \vfill
+    {
+    \scriptsize
+    \textbf{NTNU}
+
+    Norwegian University of Science and Technology
+
+    Master's thesis\\
+    for the degree of \DegreeType
+
+    \Faculty\ \\
+    \Department
+
+    \copyright\ \Year\ \@author. \CopyrightNotice
+
+ %   ISBN \ISBNPrinted\ (printed version)\\
+  %  ISBN \ISBNElectronic\ (electronic version)\\
+  %  ISSN 1503-8181
+
+    Master's theses at NTNU
+
+    Printed by NTNU-trykk
+    }
+    \end{titlingpage}
+}
+%
 % Process options passed to the class
 %
 \DeclareOption{a4crop}{
@@ -74,12 +137,21 @@
     \renewcommand{\ClassOptions}{twoside,openright,onecolumn}
 }
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{memoir}}
-\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{memoir}}
+%\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{memoir}}
 \DeclareOption{screen}{
     \renewcommand{\CropLandscapeFlag}{landscape}
     \renewcommand{\GeometryOptions}{margin=10mm,screen}
     \newcommand{\ScreenMode}{true}
 }
+\DeclareOption{final}{
+    \renewcommand{\mktitle}{%
+    }%
+}
+\DeclareOption{a4paper}{%
+    \renewcommand{\ClassOptions}{a4paper,twoside,openright,onecolumn}%
+    \renewcommand{\GeometryOptions}{margin=25mm,top=15mm,bindingoffset=10mm,a4paper}%
+}
+
 \DeclareOption{10pt}{\renewcommand{\FontSize}{10pt}}
 \DeclareOption{11pt}{\renewcommand{\FontSize}{11pt}}
 \DeclareOption{12pt}{\renewcommand{\FontSize}{12pt}}
@@ -88,7 +160,7 @@
 \ProcessOptions\relax
 
 \LoadClass[\ClassOptions,\FontSize]{memoir}
-%\LoadClass[b5paper,11pt,twoside,openright,onecolumn]{memoir}
+
 
 % Set appropriate margins
 \RequirePackage[\GeometryOptions,includeheadfoot,headheight=14.5pt]{geometry}
@@ -116,19 +188,7 @@
 \numberwithin{table}{chapter}
 \numberwithin{figure}{chapter}
 
-%
-% Define the commands to set the variables used by \maketitle
-%
-\newcommand{\subtitle}[1]{\renewcommand{\SubTitle}{#1}}
-\newcommand{\degreetype}[1]{\renewcommand{\DegreeType}{#1}}
-\newcommand{\faculty}[1]{\renewcommand{\Faculty}{#1}}
-\newcommand{\department}[1]{\renewcommand{\Department}{#1}}
-\newcommand{\copyrightnotice}[1]{\renewcommand{\CopyrightNotice}{#1}}
-\newcommand{\isbnprinted}[1]{\renewcommand{\ISBNPrinted}{#1}}
-\newcommand{\isbnelectronic}[1]{\renewcommand{\ISBNElectronic}{#1}}
-\newcommand{\serialnumber}[1]{\renewcommand{\SerialNumber}{#1}}
-\newcommand{\setyear}[1]{\renewcommand{\Year}{#1}}
-\newcommand{\setmonth}[1]{\renewcommand{\Month}{#1}}
+
 
 %
 % Override the \maketitle command
@@ -154,7 +214,7 @@
     \Department}
     \printandscreen{\vspace{2cm}}{\vspace{0.75cm}}
 
-    \includegraphics[width=0.4\textwidth]{Build/NTNUlogo}
+    \includegraphics[width=0.4\textwidth]{DocumentClass/NTNUlogo}
 
     \newpage
     {~}

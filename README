@@ -1,12 +1,25 @@
-Template for master thesis at NTNU for latex.
+
+File for the ntnuthesis LaTeX class.
+This class produces a subset of book suitable for 
+theses written at NTNU.
+
+Original author: Federico Zenith
+
+Edit: Arne Tobias Elve (tobelve@gmail.com) 2015
 
 options:
 
 a4crop  - Produces A4 size paper with b5 size text zoomed into a corner
+a4paper - Produces A4 paper. Use for project.
 10pt    - fontsize
 11pt    - fontsize (default)
 12pt    - fontsize
 screen  - Produces screensize pdf
-final   - Produces b5 pdf used for delivering
+draft   - Use this option if frontpage is to be included.
+final   - Produces b5 pdf used for delivering the final report.
+          This option removes the front page if \mktitle is used
+          for producing the front page
 
-The front page is not required when handing in the final product.
+
+
+
