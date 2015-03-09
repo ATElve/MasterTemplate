@@ -1,0 +1,314 @@
+\makeatletter
+
+\usetikzlibrary{calc}
+% this declares a camera that rotates
+\tikzset{>=stealth}
+% this declares a fixed camera, it has to be rotated by the /tikz/rotate key
+\pgfdeclareshape{reservoir}
+{
+  \inheritsavedanchors[from=circle] % this is nearly a circle
+  \inheritanchorborder[from=circle]
+  % \inheritanchor[from=circle]{north}
+  \inheritanchor[from=circle]{north west}
+  % \inheritanchor[from=circle]{north east}
+  \inheritanchor[from=circle]{center}
+  \inheritanchor[from=circle]{west}
+  \inheritanchor[from=circle]{east}
+  \inheritanchor[from=circle]{mid}
+  \inheritanchor[from=circle]{mid west}
+  \inheritanchor[from=circle]{mid east}
+  \inheritanchor[from=circle]{base}
+  \inheritanchor[from=circle]{base west}
+  \inheritanchor[from=circle]{base east}
+  \inheritanchor[from=circle]{south}
+  \inheritanchor[from=circle]{south west}
+  % \inheritanchor[from=circle]{south east}
+  % \inheritbackgroundpath[from=circle]
+  \backgroundpath{
+    \centerpoint%
+    \pgf@xc=\pgf@x%                                                                                                                   \pgf@xc = x value of centerpoint
+    \pgf@yc=\pgf@y%                                                                                                                   \pgf@yc = y value of centerpoint
+    \pgfutil@tempdima=\radius%                                                                                              \pgfutil@tempdima = radius
+    \pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%                                                                     \pgf@xb = outer xsep
+    \pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%                                                                     \pgf@yb = outer ysep
+    \ifdim\pgf@xb<\pgf@yb%                                                                                                           correction of radius variable
+      \advance\pgfutil@tempdima by-\pgf@yb%
+    \else%
+      \advance\pgfutil@tempdima by-\pgf@xb%
+    \fi%
+    %\pgftransformrotate{-90}%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{\pgf@xc}{\pgf@yc}}{\pgfqpoint{1\pgfutil@tempdima}{1\pgfutil@tempdima}}}
+    \pgfpatharc{90}{270}{2\pgfutil@tempdima and 1\pgfutil@tempdima}
+    \pgfusepath{fill,stroke}
+  }
+}
+
+\pgfdeclareshape{reservoirN}
+{
+  \inheritsavedanchors[from=circle] % this is nearly a circle
+  \inheritanchorborder[from=circle]
+  \inheritanchor[from=circle]{north}
+  \inheritanchor[from=circle]{north west}
+  \inheritanchor[from=circle]{north east}
+  \inheritanchor[from=circle]{center}
+  \inheritanchor[from=circle]{west}
+  \inheritanchor[from=circle]{east}
+  \inheritanchor[from=circle]{mid}
+  \inheritanchor[from=circle]{mid west}
+  \inheritanchor[from=circle]{mid east}
+  \inheritanchor[from=circle]{base}
+  \inheritanchor[from=circle]{base west}
+  \inheritanchor[from=circle]{base east}
+  \inheritanchor[from=circle]{south}
+  \inheritanchor[from=circle]{south west}
+  \inheritanchor[from=circle]{south east}
+  % \inheritbackgroundpath[from=circle]
+  \backgroundpath{
+    \centerpoint%
+    \pgf@xc=\pgf@x%                                                                                                                   \pgf@xc = x value of centerpoint
+    \pgf@yc=\pgf@y%                                                                                                                   \pgf@yc = y value of centerpoint
+    \pgfutil@tempdima=\radius%                                                                                              \pgfutil@tempdima = radius
+    \pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%                                                                     \pgf@xb = outer xsep
+    \pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%                                                                     \pgf@yb = outer ysep
+    \ifdim\pgf@xb<\pgf@yb%                                                                                                           correction of radius variable
+      \advance\pgfutil@tempdima by-\pgf@yb%
+    \else%
+      \advance\pgfutil@tempdima by-\pgf@xb%
+    \fi%
+    %\pgftransformrotate{-90}%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{\pgf@xc}{\pgf@yc}}{\pgfqpoint{1\pgfutil@tempdima}{1\pgfutil@tempdima}}}
+    \pgfpatharc{0}{-180}{1\pgfutil@tempdima and 2\pgfutil@tempdima}
+    \pgfusepath{fill,stroke}
+  }
+}
+
+\pgfdeclareshape{reservoirS}
+{
+  \inheritsavedanchors[from=circle] % this is nearly a circle
+  \inheritanchorborder[from=circle]
+  \inheritanchor[from=circle]{north}
+  \inheritanchor[from=circle]{north west}
+  \inheritanchor[from=circle]{north east}
+  \inheritanchor[from=circle]{center}
+  \inheritanchor[from=circle]{west}
+  \inheritanchor[from=circle]{east}
+  \inheritanchor[from=circle]{mid}
+  \inheritanchor[from=circle]{mid west}
+  \inheritanchor[from=circle]{mid east}
+  \inheritanchor[from=circle]{base}
+  \inheritanchor[from=circle]{base west}
+  \inheritanchor[from=circle]{base east}
+  \inheritanchor[from=circle]{south}
+  \inheritanchor[from=circle]{south west}
+  \inheritanchor[from=circle]{south east}
+  % \inheritbackgroundpath[from=circle]
+  \backgroundpath{
+    \centerpoint%
+    \pgf@xc=\pgf@x%                                                                                                                   \pgf@xc = x value of centerpoint
+    \pgf@yc=\pgf@y%                                                                                                                   \pgf@yc = y value of centerpoint
+    \pgfutil@tempdima=\radius%                                                                                              \pgfutil@tempdima = radius
+    \pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%                                                                     \pgf@xb = outer xsep
+    \pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%                                                                     \pgf@yb = outer ysep
+    \ifdim\pgf@xb<\pgf@yb%                                                                                                           correction of radius variable
+      \advance\pgfutil@tempdima by-\pgf@yb%
+    \else%
+      \advance\pgfutil@tempdima by-\pgf@xb%
+    \fi%
+    %\pgftransformrotate{-90}%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{\pgf@xc}{\pgf@yc}}{\pgfqpoint{-1\pgfutil@tempdima}{-1\pgfutil@tempdima}}}
+    \pgfpatharc{180}{0}{1\pgfutil@tempdima and 2\pgfutil@tempdima}
+    \pgfusepath{fill,stroke}
+  }
+}
+
+\pgfdeclareshape{reservoirW}
+{
+  \inheritsavedanchors[from=circle] % this is nearly a circle
+  \inheritanchorborder[from=circle]
+  \inheritanchor[from=circle]{north}
+  \inheritanchor[from=circle]{north west}
+  \inheritanchor[from=circle]{north east}
+  \inheritanchor[from=circle]{center}
+  \inheritanchor[from=circle]{west}
+  \inheritanchor[from=circle]{east}
+  \inheritanchor[from=circle]{mid}
+  \inheritanchor[from=circle]{mid west}
+  \inheritanchor[from=circle]{mid east}
+  \inheritanchor[from=circle]{base}
+  \inheritanchor[from=circle]{base west}
+  \inheritanchor[from=circle]{base east}
+  \inheritanchor[from=circle]{south}
+  \inheritanchor[from=circle]{south west}
+  \inheritanchor[from=circle]{south east}
+  % \inheritbackgroundpath[from=circle]
+  \backgroundpath{
+    \centerpoint%
+    \pgf@xc=\pgf@x%                                                                                                                   \pgf@xc = x value of centerpoint
+    \pgf@yc=\pgf@y%                                                                                                                   \pgf@yc = y value of centerpoint
+    \pgfutil@tempdima=\radius%                                                                                              \pgfutil@tempdima = radius
+    \pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%                                                                     \pgf@xb = outer xsep
+    \pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%                                                                     \pgf@yb = outer ysep
+    \ifdim\pgf@xb<\pgf@yb%                                                                                                           correction of radius variable
+      \advance\pgfutil@tempdima by-\pgf@yb%
+    \else%
+      \advance\pgfutil@tempdima by-\pgf@xb%
+    \fi%
+    %\pgftransformrotate{-90}%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{\pgf@xc}{\pgf@yc}}{\pgfqpoint{-1\pgfutil@tempdima}{-1\pgfutil@tempdima}}}
+    \pgfpatharc{-90}{90}{2\pgfutil@tempdima and 1\pgfutil@tempdima}
+    \pgfusepath{fill,stroke}
+  }
+}
+
+\pgfdeclareshape{reservoirE}
+{
+  \inheritsavedanchors[from=circle] % this is nearly a circle
+  \inheritanchorborder[from=circle]
+  \inheritanchor[from=circle]{north}
+  \inheritanchor[from=circle]{north west}
+  \inheritanchor[from=circle]{north east}
+  \inheritanchor[from=circle]{center}
+  \inheritanchor[from=circle]{west}
+  \inheritanchor[from=circle]{east}
+  \inheritanchor[from=circle]{mid}
+  \inheritanchor[from=circle]{mid west}
+  \inheritanchor[from=circle]{mid east}
+  \inheritanchor[from=circle]{base}
+  \inheritanchor[from=circle]{base west}
+  \inheritanchor[from=circle]{base east}
+  \inheritanchor[from=circle]{south}
+  \inheritanchor[from=circle]{south west}
+  \inheritanchor[from=circle]{south east}
+ 
+  \backgroundpath{
+    \centerpoint%
+    \pgf@xc=\pgf@x%                                                                                                                   \pgf@xc = x value of centerpoint
+    \pgf@yc=\pgf@y%                                                                                                                   \pgf@yc = y value of centerpoint
+    \pgfutil@tempdima=\radius%                                                                                              \pgfutil@tempdima = radius
+    \pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%                                                                     \pgf@xb = outer xsep
+    \pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%                                                                     \pgf@yb = outer ysep
+    \ifdim\pgf@xb<\pgf@yb%                                                                                                           correction of radius variable
+      \advance\pgfutil@tempdima by-\pgf@yb%
+    \else%
+      \advance\pgfutil@tempdima by-\pgf@xb%
+    \fi%
+    %\pgftransformrotate{-90}%
+    \pgfpathmoveto{\pgfpointadd{\pgfqpoint{\pgf@xc}{\pgf@yc}}{\pgfqpoint{1\pgfutil@tempdima}{1\pgfutil@tempdima}}}
+    \pgfpatharc{90}{270}{2\pgfutil@tempdima and 1\pgfutil@tempdima}
+    \pgfusepath{fill,stroke}
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Tikz macros              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\arc}[3][orange]{\draw[->] (#2) -- (#3); \node[draw,circle,fill= #1 , scale = 0.1] (boundry) at ($(#2)!0.5!(#3)$){};}
+
+
+\newcommand{\grid}[5][1]{%
+    \draw[help lines,step=.2,yellow] (#2,#4) grid (#3,#5);
+    \draw[help lines,line width=.6pt,step=1,red] (#2,#4) grid (#3,#5);
+    \foreach \x in {#2,...,#3}
+    \node[anchor=north] at (\x,#4-0.5) {\x};
+    \foreach \y in {#4,...,#5}
+    \node[anchor=east] at (#2-0.5,\y) {\y};
+}%
+
+% = Tikz Libraries required for tikz figures = 
+\usetikzlibrary{decorations.pathmorphing,fadings}
+\usetikzlibrary{shapes,arrows, decorations.markings}
+\tikzset{>=stealth}
+\tikzset{node distance = 2.5 cm}
+
+% % Arrows
+% \tikzstyle{la} = [->,line width = 2pt]
+% \tikzstyle{ra} = [<-,line width = 2pt]
+% % Nodes
+% \tikzstyle{in} = [coordinate]
+% \tikzstyle{lu} = [draw, circle, minimum height = 1cm]
+% \tikzstyle{di} = [draw, ellipse, minimum height = 1cm]
+% \tikzstyle{sq} = [draw, myrectangle, minimum height = 1cm, rounded corners]
+
+
+% Anchors
+\pgfdeclareshape{myrectangle}{% taken and modified from page 631 of the manual
+  \inheritsavedanchors[from=rectangle] %  this is nearly a rectangle
+  \inheritanchorborder[from=rectangle]
+  \inheritanchor[from=rectangle]{center}
+  \inheritanchor[from=rectangle]{north}
+  \inheritanchor[from=rectangle]{south}
+  \inheritanchor[from=rectangle]{west}
+  \inheritanchor[from=rectangle]{east}
+  \inheritanchor[from=rectangle]{north west}
+  \inheritanchor[from=rectangle]{north east}
+  \inheritanchor[from=rectangle]{south west}
+  \inheritanchor[from=rectangle]{south east}
+  \inheritbackgroundpath[from=rectangle]
+  \anchor{wnw}{ % west north west
+    \pgf@process{\northeast}%
+    \pgf@ya=1.5\pgf@y%
+    \pgf@process{\southwest}%
+    \pgf@y=.5\pgf@y%
+    \advance\pgf@y by \pgf@ya%
+    \pgf@y=.5\pgf@y%
+  }
+  \anchor{wsw}{% west south west
+    \pgf@process{\northeast}%
+    \pgf@ya=.5\pgf@y%
+    \pgf@process{\southwest}%
+    \pgf@y=1.5\pgf@y%
+    \advance\pgf@y by \pgf@ya%
+    \pgf@y=.5\pgf@y%
+  }%
+  \anchor{ene}{%
+    \pgf@process{\southwest}%
+    \pgf@ya=.5\pgf@y%
+    \pgf@process{\northeast}%
+    \pgf@y=1.5\pgf@y%
+    \advance\pgf@y by \pgf@ya%
+    \pgf@y=.5\pgf@y%
+  }%
+  \anchor{ese}{%
+    \pgf@process{\southwest}%
+    \pgf@ya=1.5\pgf@y%
+    \pgf@process{\northeast}%
+    \pgf@y=.5\pgf@y%
+    \advance\pgf@y by \pgf@ya%
+    \pgf@y=.5\pgf@y%
+  }%
+  \anchor{nnw}{%
+    \pgf@process{\southwest}%
+    \pgf@xa=1.5\pgf@x%
+    \pgf@process{\northeast}%
+    \pgf@x=.5\pgf@x%
+    \advance\pgf@x by \pgf@xa%
+    \pgf@x=.5\pgf@x%
+  }%
+  \anchor{nne}{%
+    \pgf@process{\southwest}%
+    \pgf@xa=.5\pgf@x%
+    \pgf@process{\northeast}%
+    \pgf@x=1.5\pgf@x%
+    \advance\pgf@x by \pgf@xa%
+    \pgf@x=.5\pgf@x%
+  }%
+  \anchor{ssw}{%
+    \pgf@process{\northeast}%
+    \pgf@xa=.5\pgf@x%
+    \pgf@process{\southwest}%
+    \pgf@x=1.5\pgf@x%
+    \advance\pgf@x by \pgf@xa%
+    \pgf@x=.5\pgf@x%
+  }%
+  \anchor{sse}{%
+    \pgf@process{\northeast}%
+    \pgf@xa=1.5\pgf@x%
+    \pgf@process{\southwest}%
+    \pgf@x=.5\pgf@x%
+    \advance\pgf@x by \pgf@xa%
+    \pgf@x=.5\pgf@x%
+  }%
+}
+
+
+\makeatother

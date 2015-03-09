@@ -1,0 +1,86 @@
+\documentclass[]{./DocumentClass/MasterThesis}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}        
+\usepackage[pdfauthor = My \ Name]{hyperref}
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}    
+\usepackage{natbib}
+\usepackage[noabbrev]{cleveref}
+\usepackage{mathtools}                       
+\usepackage{inconsolata}
+\usepackage{listings}
+\usepackage{url}
+% \usepackage{lmodern}
+
+
+
+% = Metadata =
+\title{Your Title}
+\author{Your name}
+\date{\today} 
+\degreetype{Degree type }
+\faculty{Your faculty}
+\department{Your department}
+
+
+% = Specifications =
+\newsubfloat{figure}
+\newsubfloat{table}
+\def\arraystretch{1.15} 
+\setsecnumdepth{subsection}
+\setcounter{tocdepth}{2}
+% \setlength\parindent{0pt}
+
+
+
+\input{DocumentClass/macros}
+
+
+% = Begin Document =
+\begin{document}
+\bibliographystyle{agsm}
+\frontmatter
+
+% = Frontpage =
+\maketitle
+
+
+
+% \include{TeX/problemDescription}
+\include{TeX/abstract}
+
+
+% \include{TeX/acknowledgements}
+
+% = Table of Contents =
+\newpage
+\tableofcontents
+
+% = List of Figures and Tables
+\newpage
+\listoffigures
+\newpage
+\listoftables
+
+
+% Defining the main matter of the document. Arabic page numbers.
+\mainmatter
+
+\include{TeX/introduction}
+
+
+
+% = Bibliography =
+\newpage
+\bibliography{Bibliography/master.bib}
+
+% = Appendices =
+\appendix           % Defining rest of the document as appendices
+
+
+\include{Appendices/test}
+
+
+\end{document}

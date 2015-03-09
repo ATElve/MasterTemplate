@@ -1,0 +1,12 @@
+Template for master thesis at NTNU for latex.
+
+options:
+
+a4crop  - Produces A4 size paper with b5 size text zoomed into a corner
+10pt    - fontsize
+11pt    - fontsize (default)
+12pt    - fontsize
+screen  - Produces screensize pdf
+final   - Produces b5 pdf used for delivering
+
+The front page is not required when handing in the final product.
